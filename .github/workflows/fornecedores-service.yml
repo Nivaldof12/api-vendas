@@ -1,0 +1,20 @@
+name: Compilar fornecedores-service
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar o Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Compilar o fornecedores-service
+        run: mvn -B compile -f fornecedores-service/pom.xml
